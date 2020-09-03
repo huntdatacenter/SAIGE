@@ -1,0 +1,108 @@
+# Conda build
+# https://docs.anaconda.com/anaconda-cloud/user-guide/tasks/work-with-packages/#using-package-managers
+
+package:
+  name: r-saige
+  version: "0.39.4"
+
+build:
+  number: 0
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+requirements:
+  build:
+    - _libgcc_mutex=0.1=main
+    - _r-mutex=1.0.0=anacondar_1
+    - binutils_impl_linux-64
+    - binutils_linux-64
+    - ld_impl_linux-64
+    - gcc_impl_linux-64
+    - gcc_linux-64
+    - gfortran_impl_linux-64
+    - gfortran_linux-64
+    - gxx_impl_linux-64
+    - gxx_linux-64
+    - glib
+    - libgcc-ng
+    - libgfortran
+    - libgfortran-ng
+    - libstdcxx-ng
+    - python=2.7
+    - pip
+    - r-base=3.6.1=h9bb98a2_1
+    - r-essentials
+    - r-matrix
+    - r-spatest
+    - r-rcppeigen
+    - r-devtools
+    - r-skat
+    - r-rcpp
+    - r-rcpparmadillo
+    - r-data.table
+    - r-bh
+    - r-rcppparallel
+    - r-optparse
+    - cmake
+    - boost
+    - zlib
+    - bzip2
+    - gettext
+    - lapack
+    - openblas
+    - wheel
+    - setuptools
+    - six
+  run:
+    - _libgcc_mutex=0.1=main
+    - _r-mutex=1.0.0=anacondar_1
+    - binutils_impl_linux-64
+    - binutils_linux-64
+    - ld_impl_linux-64
+    - gcc_impl_linux-64
+    - gcc_linux-64
+    - gfortran_impl_linux-64
+    - gfortran_linux-64
+    - gxx_impl_linux-64
+    - gxx_linux-64
+    - python=2.7
+    - pip
+    - glib
+    - libgcc-ng
+    - libgfortran
+    - libgfortran-ng
+    - libstdcxx-ng
+    - r-base=3.6.1=h9bb98a2_1
+    - r-essentials
+    - r-matrix
+    - r-spatest
+    - r-rcppeigen
+    - r-devtools
+    - r-skat
+    - r-rcpp
+    - r-rcpparmadillo
+    - r-data.table
+    - r-bh
+    - r-rcppparallel
+    - r-optparse
+    - cmake
+    - boost
+    - zlib
+    - bzip2
+    - gettext
+    - lapack
+    - openblas
+    - python=2.7
+    - wheel
+    - setuptools
+    - six
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('SAIGE')"
+
+about:
+  home: https://github.com/weizhouUMICH/SAIGE
+  summary: Saige R package
