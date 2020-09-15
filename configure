@@ -10,7 +10,20 @@ fi
 
 ##install savvy library
 rm -rf thirdParty/cget
-cget install -DCMAKE_C_FLAGS="-fPIC" -DCMAKE_CXX_FLAGS="-fPIC" --prefix ${PREFIX:-thirdParty/cget} -f thirdParty/requirements.txt
+mkdir -p thirdParty/cget
+if [ ! -z "${CONDA_BUILD}" ]; then
+  export TMP_SAFE="${TMP}"
+  export TMP="$(pwd)/thirdParty/tmp"
+  export TMPDIR_SAFE="${TMPDIR}"
+  export TMPDIR="$(pwd)/thirdParty/tmp"
+  mkdir -p "${TMPDIR}"
+  echo "CGET: ${PREFIX} ${TMP} ${TMPDIR}"
+fi
+cget install -DCMAKE_C_FLAGS="-fPIC" -DCMAKE_CXX_FLAGS="-fPIC" --prefix "thirdParty/cget" -f thirdParty/requirements.txt
+if [ ! -z "${CONDA_BUILD}" ]; then
+  export TMP="${TMP_SAFE}"
+  export TMPDIR="${TMPDIR_SAFE}"
+fi
 
 ##install the bgen library
 if [ -z "${CONDA_BUILD}" ]; then
